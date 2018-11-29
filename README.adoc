@@ -12,7 +12,7 @@ Cookiecutter can automatically pull templates from GitHub, see <<Usage>>.
 
 [source,shell]
 ----
-$ cookiecutter gh:b2-cookiecutter
+$ cookiecutter gh:grisumbras/b2-cookiecutter
 ----
 
 == Maintainer
