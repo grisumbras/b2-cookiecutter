@@ -11,8 +11,10 @@ ____
 ____
 
 == Install
+{%- if cookiecutter.conan == 'py' %}
 
-{% if cookiecutter.conan == 'py' -%}
+=== Using https://conan.io[Conan]
+
 Install using Conan
 
 [source,shell]
@@ -28,6 +30,14 @@ or put into your `conanfile.txt`
 {{conan_ref}}
 ----
 {%- endif %}
+
+=== Install from sources
+
+----
+$ git clone https://{{cookiecutter.remote_server}}/{{cookiecutter.remote_username}}/{{cookiecutter.project_slug}}.git
+$ cd {{cookiecutter.project_slug}}
+$ b2 install --prefix=<installation prefix>
+----
 
 == Usage
 
