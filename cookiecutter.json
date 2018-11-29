@@ -1,6 +1,9 @@
 { "project_name": "B2 Project"
+, "project_type": ["lib", "exe"]
+, "project_version": "0.0.1"
 , "project_description": "No description"
 , "project_slug": "{{cookiecutter.project_name.lower().replace(' ', '-')}}"
+, "project_namespace": "{{cookiecutter.project_slug.replace('-', '_')}}"
 , "full_name": "John Doe"
 , "email": "johnd@example.com"
 , "_extensions": ["jinja2_time.TimeExtension"]
