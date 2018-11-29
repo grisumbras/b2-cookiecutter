@@ -1,5 +1,5 @@
 = {{cookiecutter.project_name}}
-{%- if cookiecutter.project_name != cookiecutter.project_slug -%} _({{cookiecutter.project_slug}})_{% endif %}
+{%- if cookiecutter.project_name != cookiecutter.project_slug %} _({{cookiecutter.project_slug}})_{% endif %}
 
 ____
 {{cookiecutter.project_description}}
