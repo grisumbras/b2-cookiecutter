@@ -1,0 +1,25 @@
+= b2-cookiecutter
+
+____
+Cookiecutter template for C++ projects using Boost.Build.
+____
+
+== Install
+
+Cookiecutter can automatically pull templates from GitHub, see <<Usage>>.
+
+== Usage
+
+[source,shell]
+----
+$ cookiecutter gh:b2-cookiecutter
+----
+
+== Maintainer
+Dmitry Arkhipov <grisumbras@gmail.com>
+
+== Contributing
+Patches welcome!
+
+== License
+link:LICENSE[BSL-1.0] (C) 2018 Dmitry Arkhipov
