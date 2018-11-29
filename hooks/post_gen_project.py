@@ -12,6 +12,15 @@ def project_type():
         os.remove(os.path.join('src', '{{cookiecutter.project_namespace}}.cpp'))
 
 
+def conan():
+    conan_type = '{{cookiecutter.conan}}'
+    if conan_type != 'txt':
+        os.remove(os.path.join('conan', 'conanfile.txt'))
+
+    if conan_type != 'py':
+        os.remove(os.path.join('conan', 'conanfile.py'))
+
+
 def git():
     if not {{cookiecutter.git}}:
         return
@@ -28,4 +37,5 @@ def git():
 
 if __name__ == '__main__':
     project_type()
+    conan()
     git()

@@ -1,3 +1,8 @@
+{%- set conan_ref = cookiecutter.project_slug
+                  + '/' + cookiecutter.project_version
+                  + '@' + cookiecutter.conan_username
+                  + '/stable'
+-%}
 = {{cookiecutter.project_name}}
 {%- if cookiecutter.project_name != cookiecutter.project_slug %} _({{cookiecutter.project_slug}})_{% endif %}
 
@@ -6,6 +11,23 @@ ____
 ____
 
 == Install
+
+{% if cookiecutter.conan == 'py' -%}
+Install using Conan
+
+[source,shell]
+----
+$ conan install {{conan_ref}}
+----
+
+or put into your `conanfile.txt`
+
+[source,ini]
+----
+[requires]
+{{conan_ref}}
+----
+{%- endif %}
 
 == Usage
 

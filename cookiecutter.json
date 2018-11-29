@@ -9,5 +9,8 @@
 , "remote_username": "johnd"
 , "remote_server": "github.com"
 , "git": [true, false]
+, "conan": ["no", "txt", "py"]
+, "conan_username": "{{cookiecutter.remote_username}}"
+, "b2_version": "1.67.0"
 , "_extensions": ["jinja2_time.TimeExtension"]
 }
