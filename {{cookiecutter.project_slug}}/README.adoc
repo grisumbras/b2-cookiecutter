@@ -1,0 +1,19 @@
+= {{cookiecutter.project_name}}
+{%- if cookiecutter.project_name != cookiecutter.project_slug -%} _({{cookiecutter.project_slug}})_{% endif %}
+
+____
+{{cookiecutter.project_description}}
+____
+
+== Install
+
+== Usage
+
+== Maintainer
+{{cookiecutter.full_name}} <{{cookiecutter.email}}>
+
+== Contributing
+Patches welcome!
+
+== License
+link:LICENSE[BSL-1.0] (C) {%now 'local', '%Y'%} {{cookiecutter.full_name}}

@@ -1,0 +1,7 @@
+{ "project_name": "B2 Project"
+, "project_description": "No description"
+, "project_slug": "{{cookiecutter.project_name.lower().replace(' ', '-')}}"
+, "full_name": "John Doe"
+, "email": "johnd@example.com"
+, "_extensions": ["jinja2_time.TimeExtension"]
+}
