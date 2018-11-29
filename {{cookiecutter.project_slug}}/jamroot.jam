@@ -1,4 +1,8 @@
 import option ;
+import package ;
+{% if cookiecutter.project_type == 'lib' -%}
+import path ;
+{%- endif %}
 
 
 project {{cookiecutter.project_slug}}
@@ -15,5 +19,14 @@ exe
 {%- if cookiecutter.project_type == 'lib' %}
   : <include>include
     <version>{{cookiecutter.project_version}}
+{%- endif %}
+  ;
+
+package.install install {{cookiecutter.project_slug}}
+  : {% if cookiecutter.project_type == 'lib' %}<install-source-root>include{% endif %}
+  : {% if cookiecutter.project_type == 'exe' %} {{cookiecutter.project_slug}}{% endif %}
+{%- if cookiecutter.project_type == 'lib' %}
+  : {{cookiecutter.project_slug}}
+  : [ path.glob-tree include : *.hpp ]
 {%- endif %}
   ;
