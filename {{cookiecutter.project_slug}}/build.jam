@@ -1,13 +1,8 @@
-import option ;
 import package ;
-{% if cookiecutter.project_type == 'lib' -%}
-import path ;
-{%- endif %}
 
 
-project {{cookiecutter.project_slug}}
-  : build-dir [ option.get build-dir : build ]
-  ;
+project {{cookiecutter.project_slug}} ;
+constant VERSION : {{cookiecutter.project_version}} ;
 
 
 {% if cookiecutter.project_type == 'lib' -%}
@@ -18,7 +13,6 @@ exe
   : [ glob src/*.cpp ]
 {%- if cookiecutter.project_type == 'lib' %}
   : <include>include
-    <version>{{cookiecutter.project_version}}
 {%- endif %}
   ;
 
@@ -27,6 +21,6 @@ package.install install {{cookiecutter.project_slug}}
   : {% if cookiecutter.project_type == 'exe' %} {{cookiecutter.project_slug}}{% endif %}
 {%- if cookiecutter.project_type == 'lib' %}
   : {{cookiecutter.project_slug}}
-  : [ path.glob-tree include : *.hpp ]
+  : [ glob-tree-ex include : *.hpp ]
 {%- endif %}
   ;

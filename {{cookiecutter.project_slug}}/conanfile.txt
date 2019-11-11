@@ -1,0 +1,11 @@
+[requires]
+
+[build_requires]
+b2/{{cookiecutter.b2_version}}
+
+[generators]
+b2
+virtualenv
+{% if cookiecutter.project_type == 'exe' -%}
+virtualrunenv
+{%- endif %}

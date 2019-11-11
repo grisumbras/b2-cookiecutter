@@ -4,8 +4,7 @@ import subprocess
 
 
 def project_type():
-    project_type = '{{cookiecutter.project_type}}'
-    if project_type == 'lib':
+    if '{{cookiecutter.project_type}}' == 'lib':
         os.remove(os.path.join('src', 'main.cpp'))
     else:
         shutil.rmtree('include')
@@ -13,12 +12,9 @@ def project_type():
 
 
 def conan():
-    conan_type = '{{cookiecutter.conan}}'
-    if conan_type != 'txt':
-        os.remove(os.path.join('conan', 'conanfile.txt'))
-
-    if conan_type != 'py':
-        os.remove(os.path.join('conan', 'conanfile.py'))
+    for ext in ['py', 'txt']:
+        if '{{cookiecutter.conan}}' != ext:
+            os.remove('conanfile.' + ext)
 
 
 def git():
@@ -33,6 +29,8 @@ def git():
         project="{{cookiecutter.project_slug}}",
     )
     subprocess.call(['git', 'remote', 'add', 'origin', remote])
+    subprocess.call(['git', 'config', '--add', 'user.name', '{{cookiecutter.full_name}}'])
+    subprocess.call(['git', 'config', '--add', 'user.email', '{{cookiecutter.email}}'])
 
 
 if __name__ == '__main__':

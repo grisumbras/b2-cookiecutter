@@ -1,8 +1,0 @@
-[requires]
-
-[build_requires]
-boost_build/{{cookiecutter.b2_version}}@bincrafters/stable
-
-[generators]
-b2
-virtualenv

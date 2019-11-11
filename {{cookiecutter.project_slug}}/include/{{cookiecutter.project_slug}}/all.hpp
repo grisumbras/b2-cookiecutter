@@ -2,6 +2,7 @@
 #ifndef {{headerguard}}
 #define {{headerguard}}
 
+
 namespace {{cookiecutter.project_namespace}} {
 
 

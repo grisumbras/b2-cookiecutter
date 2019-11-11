@@ -1,12 +1,27 @@
 from conans import (
     ConanFile,
+    python_requires,
     tools,
 )
+import re
 
 
-{{cookiecutter.project_name.title().replace('-', '').replace(' ', '')}}Conan(ConanFile):
+b2 = python_requires('b2-helper/0.5.0@grisumbras/stable')
+
+
+def get_version():
+    try:
+        content = tools.load("build.jam")
+        match = re.search(r"constant\s*VERSION\s*:\s*(\S+)\s*;", content)
+        return match.group(1)
+    except:
+        pass
+
+
+@b2.build_with_b2
+class {{cookiecutter.project_name.title().replace('-', '').replace(' ', '')}}Conan(ConanFile):
     name = '{{cookiecutter.project_slug}}'
-    version = '{{cookiecutter.project_version}}'
+    version = get_version()
     license = 'BSL-1.0'
     description = '{{cookiecutter.project_description}}'
     {% if cookiecutter.git -%}
@@ -40,19 +55,14 @@ from conans import (
         'shared': True,
     }
     {% endif -%}
-    generators = 'b2',
     requires = ()
-    build_requires = 'boost_build/{{cookiecutter.b2_version}}@bincrafers/stable',
-    exports_sources = '../LICENSE', '../*.jam', '../src/*', {% if cookiecutter.project_type == 'lib' -%}
-    '../include/*',
-    {%- endif %}
 
-    def build(self):
-        if self.should_build:
-            self.run('b2')
-
-    def package(self):
-        self.run('b2 install')
-
-    def package_info(self):
-        self.cpp_info.libs = tools.collect_libs(self)
+    no_copy_source = True
+    exports_sources = (
+        'LICENSE*',
+        '*build.jam',
+        'src/*',
+        {% if cookiecutter.project_type == 'lib' -%}
+        'include/*',
+        {%- endif %}
+    )
